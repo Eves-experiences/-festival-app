@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Djs</h1>
+
+<div id="djs">
+  <% @djs.each do |dj| %>
+    <%= render dj %>
+
+    <button class="btn btn-info">
+      <%= link_to "Show this dj", dj %>
+    </button>
+  <% end %>
+</div>
+
+<button class="btn btn-warning">
+  <%= link_to "New dj", new_dj_path %>
+</button>

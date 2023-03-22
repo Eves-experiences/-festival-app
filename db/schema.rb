@@ -10,8 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_22_064424) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "djs", force: :cascade do |t|
+    t.string "name"
+    t.string "dj_name"
+    t.string "genre"
+    t.integer "age"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "music_sets", force: :cascade do |t|
+    t.string "name"
+    t.string "style"
+    t.integer "duration"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stages", force: :cascade do |t|
+    t.bigint "dj_id", null: false
+    t.bigint "music_set_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dj_id"], name: "index_stages_on_dj_id"
+    t.index ["music_set_id"], name: "index_stages_on_music_set_id"
+  end
+
+  add_foreign_key "stages", "djs"
+  add_foreign_key "stages", "music_sets"
 end

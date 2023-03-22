@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<div>
+  <h2>
+    This is DJ: <%= @dj.dj_name %>
+  </h2>
+</div>
+<%= render @dj %>
+
+<div>
+  <button class="btn btn-info">
+    <%= link_to "Edit this dj", edit_dj_path(@dj) %>
+  </button>
+  <button class="btn btn-warning">
+    <%= link_to "Back to djs", djs_path %>
+  </button>
+
+  <%= button_to "Destroy this dj", @dj, method: :delete %>
+</div>
